@@ -124,10 +124,8 @@ class HyVornClient extends Client {
       'ReactionRoles',
       'Giveaways',
       'Requests',
-      'Tickets',
       'TempVoice',
-      'Birthdays',
-      'Suggestions'
+      'Birthdays'
     ];
 
     for (const moduleName of moduleNames) {

@@ -13,7 +13,7 @@ export default class Birthdays {
 
   initDatabase() {
     // Birthday configuration per guild
-    this.db.prepare(`
+    this.db.db.prepare(`
       CREATE TABLE IF NOT EXISTS birthday_config (
         guild_id TEXT PRIMARY KEY,
         channel_id TEXT NOT NULL,
@@ -24,7 +24,7 @@ export default class Birthdays {
     `).run();
 
     // User birthdays
-    this.db.prepare(`
+    this.db.db.prepare(`
       CREATE TABLE IF NOT EXISTS birthdays (
         user_id TEXT NOT NULL,
         guild_id TEXT NOT NULL,
@@ -36,7 +36,7 @@ export default class Birthdays {
     `).run();
 
     // Track last check to avoid duplicate announcements
-    this.db.prepare(`
+    this.db.db.prepare(`
       CREATE TABLE IF NOT EXISTS birthday_checks (
         guild_id TEXT NOT NULL,
         user_id TEXT NOT NULL,
@@ -47,11 +47,11 @@ export default class Birthdays {
   }
 
   getConfig(guildId) {
-    return this.db.prepare('SELECT * FROM birthday_config WHERE guild_id = ?').get(guildId);
+    return this.db.db.prepare('SELECT * FROM birthday_config WHERE guild_id = ?').get(guildId);
   }
 
   setConfig(guildId, data) {
-    const stmt = this.db.prepare(`
+    const stmt = this.db.db.prepare(`
       INSERT INTO birthday_config (guild_id, channel_id, message, role_id, enabled)
       VALUES (?, ?, ?, ?, ?)
       ON CONFLICT(guild_id) DO UPDATE SET
@@ -75,7 +75,7 @@ export default class Birthdays {
       throw new Error('Invalid date. Month must be 1-12 and day must be 1-31.');
     }
 
-    const stmt = this.db.prepare(`
+    const stmt = this.db.db.prepare(`
       INSERT INTO birthdays (user_id, guild_id, month, day, year)
       VALUES (?, ?, ?, ?, ?)
       ON CONFLICT(user_id, guild_id) DO UPDATE SET
@@ -87,12 +87,12 @@ export default class Birthdays {
   }
 
   getBirthday(userId, guildId) {
-    return this.db.prepare('SELECT * FROM birthdays WHERE user_id = ? AND guild_id = ?')
+    return this.db.db.prepare('SELECT * FROM birthdays WHERE user_id = ? AND guild_id = ?')
       .get(userId, guildId);
   }
 
   removeBirthday(userId, guildId) {
-    this.db.prepare('DELETE FROM birthdays WHERE user_id = ? AND guild_id = ?')
+    this.db.db.prepare('DELETE FROM birthdays WHERE user_id = ? AND guild_id = ?')
       .run(userId, guildId);
   }
 
@@ -101,7 +101,7 @@ export default class Birthdays {
     const currentMonth = now.getMonth() + 1;
     const currentDay = now.getDate();
 
-    return this.db.prepare(`
+    return this.db.db.prepare(`
       SELECT * FROM birthdays
       WHERE guild_id = ?
       ORDER BY
@@ -119,7 +119,7 @@ export default class Birthdays {
     const month = now.getMonth() + 1;
     const day = now.getDate();
 
-    return this.db.prepare(`
+    return this.db.db.prepare(`
       SELECT * FROM birthdays
       WHERE guild_id = ? AND month = ? AND day = ?
     `).all(guildId, month, day);
@@ -127,7 +127,7 @@ export default class Birthdays {
 
   hasBeenCheckedToday(guildId, userId) {
     const today = new Date().toDateString();
-    const check = this.db.prepare(`
+    const check = this.db.db.prepare(`
       SELECT * FROM birthday_checks
       WHERE guild_id = ? AND user_id = ? AND last_check = ?
     `).get(guildId, userId, today);
@@ -137,7 +137,7 @@ export default class Birthdays {
 
   markAsChecked(guildId, userId) {
     const today = new Date().toDateString();
-    this.db.prepare(`
+    this.db.db.prepare(`
       INSERT INTO birthday_checks (guild_id, user_id, last_check)
       VALUES (?, ?, ?)
       ON CONFLICT(guild_id, user_id) DO UPDATE SET
@@ -156,7 +156,7 @@ export default class Birthdays {
   }
 
   async checkAllBirthdays() {
-    const guilds = this.db.prepare('SELECT DISTINCT guild_id FROM birthday_config WHERE enabled = 1').all();
+    const guilds = this.db.db.prepare('SELECT DISTINCT guild_id FROM birthday_config WHERE enabled = 1').all();
 
     for (const { guild_id } of guilds) {
       await this.checkGuildBirthdays(guild_id);
@@ -224,7 +224,7 @@ export default class Birthdays {
   }
 
   getAllBirthdays(guildId) {
-    return this.db.prepare('SELECT * FROM birthdays WHERE guild_id = ? ORDER BY month, day')
+    return this.db.db.prepare('SELECT * FROM birthdays WHERE guild_id = ? ORDER BY month, day')
       .all(guildId);
   }
 }

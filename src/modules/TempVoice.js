@@ -14,7 +14,7 @@ export default class TempVoice {
 
   initDatabase() {
     // Configuration per guild
-    this.db.prepare(`
+    this.db.db.prepare(`
       CREATE TABLE IF NOT EXISTS tempvoice_config (
         guild_id TEXT PRIMARY KEY,
         lobby_channel_id TEXT NOT NULL,
@@ -26,7 +26,7 @@ export default class TempVoice {
     `).run();
 
     // Track temp channels
-    this.db.prepare(`
+    this.db.db.prepare(`
       CREATE TABLE IF NOT EXISTS tempvoice_channels (
         channel_id TEXT PRIMARY KEY,
         guild_id TEXT NOT NULL,
@@ -37,11 +37,11 @@ export default class TempVoice {
   }
 
   getConfig(guildId) {
-    return this.db.prepare('SELECT * FROM tempvoice_config WHERE guild_id = ?').get(guildId);
+    return this.db.db.prepare('SELECT * FROM tempvoice_config WHERE guild_id = ?').get(guildId);
   }
 
   setConfig(guildId, data) {
-    const stmt = this.db.prepare(`
+    const stmt = this.db.db.prepare(`
       INSERT INTO tempvoice_config (guild_id, lobby_channel_id, category_id, channel_name, user_limit, enabled)
       VALUES (?, ?, ?, ?, ?, ?)
       ON CONFLICT(guild_id) DO UPDATE SET
@@ -107,7 +107,7 @@ export default class TempVoice {
       });
 
       // Save to database
-      this.db.prepare(`
+      this.db.db.prepare(`
         INSERT INTO tempvoice_channels (channel_id, guild_id, owner_id, created_at)
         VALUES (?, ?, ?, ?)
       `).run(channel.id, guild.id, member.id, Date.now());
@@ -125,7 +125,7 @@ export default class TempVoice {
 
   async checkAndDeleteEmptyChannel(channel) {
     // Check if this is a temp channel
-    const tempChannel = this.db.prepare('SELECT * FROM tempvoice_channels WHERE channel_id = ?')
+    const tempChannel = this.db.db.prepare('SELECT * FROM tempvoice_channels WHERE channel_id = ?')
       .get(channel.id);
 
     if (!tempChannel) return;
@@ -133,7 +133,7 @@ export default class TempVoice {
     // If channel is empty, delete it
     if (channel.members.size === 0) {
       try {
-        this.db.prepare('DELETE FROM tempvoice_channels WHERE channel_id = ?').run(channel.id);
+        this.db.db.prepare('DELETE FROM tempvoice_channels WHERE channel_id = ?').run(channel.id);
         this.tempChannels.delete(channel.id);
         await channel.delete();
       } catch (error) {
@@ -143,11 +143,11 @@ export default class TempVoice {
   }
 
   getTempChannelInfo(channelId) {
-    return this.db.prepare('SELECT * FROM tempvoice_channels WHERE channel_id = ?').get(channelId);
+    return this.db.db.prepare('SELECT * FROM tempvoice_channels WHERE channel_id = ?').get(channelId);
   }
 
   getGuildTempChannels(guildId) {
-    return this.db.prepare('SELECT * FROM tempvoice_channels WHERE guild_id = ?').all(guildId);
+    return this.db.db.prepare('SELECT * FROM tempvoice_channels WHERE guild_id = ?').all(guildId);
   }
 
   async cleanupOrphanedChannels(guild) {
@@ -164,7 +164,7 @@ export default class TempVoice {
             console.error('Error deleting orphaned channel:', error);
           }
         }
-        this.db.prepare('DELETE FROM tempvoice_channels WHERE channel_id = ?').run(temp.channel_id);
+        this.db.db.prepare('DELETE FROM tempvoice_channels WHERE channel_id = ?').run(temp.channel_id);
         this.tempChannels.delete(temp.channel_id);
         cleaned++;
       }
