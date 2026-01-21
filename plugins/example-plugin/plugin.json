@@ -1,0 +1,8 @@
+{
+  "name": "ExamplePlugin",
+  "version": "1.0.0",
+  "description": "An example plugin demonstrating the HyVornBot plugin system",
+  "author": "ImVylo",
+  "main": "index.js",
+  "dependencies": []
+}

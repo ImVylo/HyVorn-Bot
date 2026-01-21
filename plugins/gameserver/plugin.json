@@ -1,0 +1,7 @@
+{
+  "name": "GameServer",
+  "version": "1.0.0",
+  "description": "Game server monitoring and status display for FiveM, Minecraft, Hytale, and more",
+  "author": "ImVylo",
+  "main": "index.js"
+}

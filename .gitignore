@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Config (contains token)
+config.json
+
+# Database
+data/
+
+# Logs
+logs/
+
+# IDE
+.vscode/
+.idea/
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/

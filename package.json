@@ -1,0 +1,26 @@
+{
+  "name": "hyvornbot",
+  "version": "1.0.0",
+  "description": "A feature-rich, modular Discord bot combining the best of MEE6 and RedBot",
+  "main": "bot.js",
+  "type": "module",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "node --watch bot.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "moderation",
+    "leveling",
+    "economy",
+    "tickets"
+  ],
+  "author": "ImVylo",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^9.4.3",
+    "discord.js": "^14.14.1",
+    "gamedig": "^5.0.0"
+  }
+}
