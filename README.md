@@ -24,19 +24,27 @@ A feature-rich, modular Discord bot combining the best of MEE6 and RedBot with e
 
 ### Command Categories
 
-#### 🛡️ Moderation
+#### 🛡️ Moderation & AutoMod
 - Ban, kick, mute, and warn members
 - Temporary bans and mutes
 - Message purging and slowmode
 - Channel lockdown
 - Nickname management
 - Role management
+- **AutoMod** - Automated moderation system
+  - Anti-spam protection
+  - Discord invite blocking
+  - External link filtering
+  - Excessive caps detection
+  - Mention spam prevention
+  - Configurable thresholds and whitelists
 
 #### 📊 Leveling System
 - XP and level tracking
 - Leaderboards
 - Rank cards
-- Customizable rewards
+- Customizable role rewards at specific levels
+- Admin commands to manage rewards and set levels
 
 #### 💰 Economy System
 - Virtual currency (wallet & bank)
@@ -109,6 +117,21 @@ A feature-rich, modular Discord bot combining the best of MEE6 and RedBot with e
 - Upcoming birthday list
 - Age calculation
 - Hourly birthday checks
+
+#### 👋 Welcome System
+- Customizable welcome and goodbye messages
+- Embed or plain text format
+- Channel configuration
+- Enable/disable toggles
+- Variable support ({user}, {username}, {server})
+- Test command to preview messages
+
+#### 🎭 Reaction Roles
+- Self-assignable roles via reactions
+- Create reaction roles on any message
+- Support for custom and standard emojis
+- List all reaction roles
+- Easy management and removal
 
 ### Plugins
 
@@ -310,24 +333,21 @@ HyVornBot/
 ## Recent Updates
 
 ### Latest Changes
+- ✅ **Module Integration Overhaul** - Unified all module and command property names
+- ✅ **New Command Suite** - Added AutoMod, Welcome, and Reaction Roles commands
+- ✅ **Leveling Rewards** - Fixed and improved level reward system
+- ✅ **Bug Fixes** - Resolved method name mismatches in giveaway and leveling commands
+- ✅ **Consistent Logging** - Replaced console.error with proper logger throughout
 - ✅ Consolidated notification settings into `/config notifications`
 - ✅ Consolidated log channel settings into `/logs channels`
 - ✅ Added channel restrictions - limit commands to specific channels
-- ✅ Added Community plugin with RPG, pets, cards, and social features
-- ✅ Added comprehensive Hytale community plugin with wiki-accurate faction data
 - ✅ Configurable bot name and owner ID via config.json
-- ✅ Fixed module loading for Birthdays and TempVoice systems
-- ✅ Unified Tickets and Suggestions into comprehensive Requests module
-- ✅ Added robust error handling for expired Discord interactions
 
-### Features Added
-- 🔔 Notification channels (`/config notifications`) - level-up, welcome messages
-- 📋 Log channels (`/logs channels`) - joins, messages, moderation, voice, etc.
-- 🔒 Channel restrictions per category (`/config channels`)
-- 🎭 Community plugin with RPG adventures, pets, cards, achievements, and more
-- 🌍 Hytale plugin with news, lore, trivia, faction roles, and more
-- 🎂 Birthday tracking with automatic announcements
-- 🎤 Temporary voice channels that auto-delete
+### New Commands
+- 🛡️ **AutoMod**: `/automod-setup`, `/automod-toggle`, `/automod-whitelist`
+- 👋 **Welcome**: `/welcome-setup`, `/welcome-test`
+- 🎭 **Reaction Roles**: `/reactionrole-create`, `/reactionrole-remove`, `/reactionrole-list`
+- ⭐ **Leveling**: `/addreward`, `/rewards` (manage role rewards for levels)
 - 📝 Unified request system (tickets, suggestions, bug reports, applications)
 - 🎮 Game server status integration via plugin system
 
