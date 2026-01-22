@@ -77,10 +77,11 @@ A feature-rich, modular Discord bot combining the best of MEE6 and RedBot with e
 - Bot configuration
 - Command prefix management
 - Plugin management
-- Channel restrictions per category
+- Channel restrictions per category (`/config channels`)
+- Notification channels (`/config notifications`)
+- Log channels (`/logs channels`)
 - Eval command (owner only)
 - Reload commands
-- View logs
 - Help system
 - About and ping commands
 
@@ -309,6 +310,8 @@ HyVornBot/
 ## Recent Updates
 
 ### Latest Changes
+- ✅ Consolidated notification settings into `/config notifications`
+- ✅ Consolidated log channel settings into `/logs channels`
 - ✅ Added channel restrictions - limit commands to specific channels
 - ✅ Added Community plugin with RPG, pets, cards, and social features
 - ✅ Added comprehensive Hytale community plugin with wiki-accurate faction data
@@ -316,9 +319,10 @@ HyVornBot/
 - ✅ Fixed module loading for Birthdays and TempVoice systems
 - ✅ Unified Tickets and Suggestions into comprehensive Requests module
 - ✅ Added robust error handling for expired Discord interactions
-- ✅ Improved bot stability - no more crashes from interaction timeouts
 
 ### Features Added
+- 🔔 Notification channels (`/config notifications`) - level-up, welcome messages
+- 📋 Log channels (`/logs channels`) - joins, messages, moderation, voice, etc.
 - 🔒 Channel restrictions per category (`/config channels`)
 - 🎭 Community plugin with RPG adventures, pets, cards, achievements, and more
 - 🌍 Hytale plugin with news, lore, trivia, faction roles, and more
