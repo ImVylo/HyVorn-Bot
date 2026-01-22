@@ -101,6 +101,28 @@ A feature-rich, modular Discord bot combining the best of MEE6 and RedBot with e
 - Age calculation
 - Hourly birthday checks
 
+### Plugins
+
+#### 🎮 Game Server Plugin
+- Monitor game servers (Minecraft, FiveM, Hytale, Source games)
+- Live player counts in voice channels
+- Auto-updating status embeds
+- Support for multiple servers per guild
+
+#### 🌍 Hytale Community Plugin
+- **News Feed** - Automatic Hytale news from hytale.com with pagination
+- **Lore Database** - Zones, factions, creatures, and weapons info
+- **Trivia System** - 34+ questions with leaderboards
+- **Faction Roles** - Self-assignable roles for all 8 factions
+- **Build Ideas** - Random Hytale-themed building challenges
+- **Fan Art Gallery** - Community art submission system
+- **Developer Quotes** - Quotes from Hypixel Studios
+- **Development Timeline** - Hytale's development history
+- **Soundtrack Info** - Music details by Oscar Garvin
+- **Concept Art Gallery** - Browse official Hytale art
+
+**Factions included:** Kweebecs, Ferans, Trorks, Scaraks, Outlanders, Slothians, Fauns, Klops
+
 ## Installation
 
 ### Prerequisites
@@ -112,8 +134,8 @@ A feature-rich, modular Discord bot combining the best of MEE6 and RedBot with e
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ImVylo/HyVornBot.git
-cd HyVornBot
+git clone https://github.com/ImVylo/HyVorn-Bot.git
+cd HyVorn-Bot
 ```
 
 2. Install dependencies:
@@ -211,7 +233,8 @@ HyVornBot/
 ├── logs/                 # Log files
 ├── plugins/              # Custom plugins
 │   ├── example-plugin/
-│   └── gameserver/
+│   ├── gameserver/
+│   └── hytale/
 └── src/
     ├── commands/         # Command files
     │   ├── admin/
@@ -258,13 +281,15 @@ HyVornBot/
 ## Recent Updates
 
 ### Latest Changes
+- ✅ Added comprehensive Hytale community plugin with wiki-accurate faction data
+- ✅ Configurable bot name and owner ID via config.json
 - ✅ Fixed module loading for Birthdays and TempVoice systems
 - ✅ Unified Tickets and Suggestions into comprehensive Requests module
 - ✅ Added robust error handling for expired Discord interactions
 - ✅ Improved bot stability - no more crashes from interaction timeouts
-- ✅ Enhanced database access patterns for better reliability
 
 ### Features Added
+- 🌍 Hytale plugin with news, lore, trivia, faction roles, and more
 - 🎂 Birthday tracking with automatic announcements
 - 🎤 Temporary voice channels that auto-delete
 - 📝 Unified request system (tickets, suggestions, bug reports, applications)
@@ -273,7 +298,7 @@ HyVornBot/
 ## Support
 
 For issues, questions, or suggestions:
-- Open an issue on [GitHub](https://github.com/ImVylo/HyVornBot/issues)
+- Open an issue on [GitHub](https://github.com/ImVylo/HyVorn-Bot/issues)
 
 ## License
 
