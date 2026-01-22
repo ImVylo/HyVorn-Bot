@@ -1,0 +1,7 @@
+{
+  "name": "Community",
+  "version": "1.0.0",
+  "description": "RPG adventures, pets, cards, reputation, achievements, starboard, time capsules, and predictions",
+  "author": "ImVylo",
+  "main": "index.js"
+}
