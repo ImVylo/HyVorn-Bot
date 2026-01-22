@@ -1,9 +1,16 @@
 // HyVornBot Constants
 // Created by ImVylo
 
+import { readFileSync } from 'fs';
+import { join, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const config = JSON.parse(readFileSync(join(__dirname, '../../config.json'), 'utf8'));
+
 export const BOT_NAME = 'HyVornBot';
 export const BOT_AUTHOR = 'ImVylo';
-export const BOT_OWNER_ID = '248477506150203392';
+export const BOT_OWNER_ID = config.ownerId;
 export const BOT_COLOR = 0x5865F2; // Discord blurple
 export const BOT_VERSION = '1.0.0';
 
