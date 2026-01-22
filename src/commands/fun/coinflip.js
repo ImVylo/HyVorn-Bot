@@ -18,17 +18,6 @@ export default {
   async execute(interaction, client) {
     const isSlash = interaction.isChatInputCommand?.();
 
-    // Check if fun commands are restricted to a specific channel
-    if (interaction.guild) {
-      const settings = client.db.getGuild(interaction.guild.id).settings;
-      if (settings.funChannel && interaction.channel.id !== settings.funChannel) {
-        return interaction.reply({
-          embeds: [errorEmbed(`Fun commands can only be used in <#${settings.funChannel}>!`)],
-          flags: MessageFlags.Ephemeral
-        });
-      }
-    }
-
     const result = Math.random() < 0.5 ? 'Heads' : 'Tails';
     const emoji = result === 'Heads' ? '🪙' : '🔵';
 

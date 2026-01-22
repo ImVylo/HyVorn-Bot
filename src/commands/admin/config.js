@@ -108,18 +108,6 @@ export default {
     )
     .addSubcommand(sub =>
       sub
-        .setName('funchannel')
-        .setDescription('Set the channel where fun commands can be used (leave empty to allow everywhere)')
-        .addChannelOption(opt =>
-          opt
-            .setName('channel')
-            .setDescription('The fun commands channel (leave empty to allow everywhere)')
-            .addChannelTypes(ChannelType.GuildText)
-            .setRequired(false)
-        )
-    )
-    .addSubcommand(sub =>
-      sub
         .setName('autopunish')
         .setDescription('Configure automatic punishment escalation for warnings')
         .addStringOption(opt =>
@@ -339,21 +327,6 @@ export default {
         return interaction.reply({
           embeds: [successEmbed(`${capitalize(moduleName)} module has been **${status}**.`)]
         });
-      }
-
-      case 'funchannel': {
-        const channel = interaction.options.getChannel('channel');
-        if (channel) {
-          client.db.setSetting(guildId, 'funChannel', channel.id);
-          return interaction.reply({
-            embeds: [successEmbed(`Fun commands can now only be used in ${channel}.`)]
-          });
-        } else {
-          client.db.setSetting(guildId, 'funChannel', null);
-          return interaction.reply({
-            embeds: [successEmbed(`Fun commands can now be used in any channel.`)]
-          });
-        }
       }
 
       case 'autopunish': {

@@ -58,17 +58,6 @@ export default {
   async execute(interaction, client) {
     const isSlash = interaction.isChatInputCommand?.();
 
-    // Check if fun commands are restricted to a specific channel
-    if (interaction.guild) {
-      const settings = client.db.getGuild(interaction.guild.id).settings;
-      if (settings.funChannel && interaction.channel.id !== settings.funChannel) {
-        return interaction.reply({
-          embeds: [errorEmbed(`Fun commands can only be used in <#${settings.funChannel}>!`)],
-          flags: MessageFlags.Ephemeral
-        });
-      }
-    }
-
     const { quote, author } = QUOTES[Math.floor(Math.random() * QUOTES.length)];
 
     const embed = new EmbedBuilder()

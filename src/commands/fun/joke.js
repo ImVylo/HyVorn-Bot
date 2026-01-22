@@ -44,17 +44,6 @@ export default {
     const isSlash = interaction.isChatInputCommand?.();
     const user = isSlash ? interaction.user : interaction.author;
 
-    // Check if fun commands are restricted to a specific channel
-    if (interaction.guild) {
-      const settings = client.db.getGuild(interaction.guild.id).settings;
-      if (settings.funChannel && interaction.channel.id !== settings.funChannel) {
-        return interaction.reply({
-          embeds: [errorEmbed(`Fun commands can only be used in <#${settings.funChannel}>!`)],
-          flags: MessageFlags.Ephemeral
-        });
-      }
-    }
-
     let jokeType = 'any';
     if (isSlash) {
       jokeType = interaction.options.getString('type') || 'any';
