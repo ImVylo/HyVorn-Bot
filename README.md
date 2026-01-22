@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="HyVorn" width="400">
+</p>
+
 # HyVornBot
 
 A feature-rich, modular Discord bot combining the best of MEE6 and RedBot with extensive customization options.
