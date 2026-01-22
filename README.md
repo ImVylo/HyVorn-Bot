@@ -341,15 +341,22 @@ HyVornBot/
 - ✅ Consolidated notification settings into `/config notifications`
 - ✅ Consolidated log channel settings into `/logs channels`
 - ✅ Added channel restrictions - limit commands to specific channels
+- ✅ Added Community plugin with RPG, pets, cards, and social features
+- ✅ Added comprehensive Hytale community plugin with wiki-accurate faction data
 - ✅ Configurable bot name and owner ID via config.json
+- ✅ Fixed module loading for Birthdays and TempVoice systems
+- ✅ Unified Tickets and Suggestions into comprehensive Requests module
+- ✅ Added robust error handling for expired Discord interactions
 
-### New Commands
+### New Commands & Features
 - 🛡️ **AutoMod**: `/automod-setup`, `/automod-toggle`, `/automod-whitelist`
 - 👋 **Welcome**: `/welcome-setup`, `/welcome-test`
 - 🎭 **Reaction Roles**: `/reactionrole-create`, `/reactionrole-remove`, `/reactionrole-list`
 - ⭐ **Leveling**: `/addreward`, `/rewards` (manage role rewards for levels)
-- 📝 Unified request system (tickets, suggestions, bug reports, applications)
-- 🎮 Game server status integration via plugin system
+- 🎮 **Community Plugin**: RPG adventures, pets, cards, reputation, achievements, starboard, time capsules, predictions
+- 🌍 **Hytale Plugin**: News feed, lore database, trivia, faction roles, build ideas, fan art gallery
+- 📝 **Unified Request System**: Tickets, suggestions, bug reports, applications
+- 🎮 **Game Server Plugin**: Monitor and display game server status
 
 ## Support
 
