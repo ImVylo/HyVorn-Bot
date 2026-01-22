@@ -149,6 +149,7 @@ npm run dev
 - `token` - Your Discord bot token
 - `clientId` - Your bot's client ID
 - `ownerId` - Your Discord user ID (for bot owner commands)
+- `botName` - Custom name for the bot (default: `HyVornBot`)
 - `defaultPrefix` - Default command prefix (default: `!`)
 - `devGuildId` - Guild ID for testing slash commands (optional)
 - `debug` - Enable debug logging (default: `false`)

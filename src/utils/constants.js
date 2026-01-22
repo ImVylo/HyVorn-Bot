@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const config = JSON.parse(readFileSync(join(__dirname, '../../config.json'), 'utf8'));
 
-export const BOT_NAME = 'HyVornBot';
+export const BOT_NAME = config.botName || 'HyVornBot';
 export const BOT_AUTHOR = 'ImVylo';
 export const BOT_OWNER_ID = config.ownerId;
 export const BOT_COLOR = 0x5865F2; // Discord blurple
