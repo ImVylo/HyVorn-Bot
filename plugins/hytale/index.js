@@ -972,7 +972,7 @@ class HytalePlugin {
           slug: post.slug,
           excerpt: post.bodyExcerpt || post.body?.substring(0, 200) || 'No description available.',
           date: post.publishedAt,
-          coverImage: post.coverImage ? `https://hytale.com${post.coverImage.s3Key}` : null,
+          coverImage: post.coverImage ? `https://hytale.com/${post.coverImage.s3Key.startsWith('/') ? post.coverImage.s3Key.slice(1) : post.coverImage.s3Key}` : null,
           author: post.author?.name || 'Hytale Team',
           url: `https://hytale.com/news/${post.publishedAt?.split('T')[0]?.replace(/-/g, '/')}/${post.slug}`
         }));
