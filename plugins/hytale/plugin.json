@@ -1,0 +1,7 @@
+{
+  "name": "Hytale",
+  "version": "1.0.0",
+  "description": "Hytale community features: news, lore, creatures, factions, zones, and more",
+  "author": "ImVylo",
+  "main": "index.js"
+}
